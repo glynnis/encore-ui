@@ -1,4 +1,4 @@
-describe('utilities:urlUtils', function () {
+describe('utilities:rxUrlUtils', function () {
     var urlutils;
     var route = {
         current: {
@@ -17,8 +17,8 @@ describe('utilities:urlUtils', function () {
             $provide.value('$route', route);
         });
 
-        inject(function (urlUtils) {
-            urlutils = urlUtils;
+        inject(function (rxUrlUtils) {
+            urlutils = rxUrlUtils;
         });
     });
 
