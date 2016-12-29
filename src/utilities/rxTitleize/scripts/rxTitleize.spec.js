@@ -1,10 +1,11 @@
 describe('titleize', function () {
-    var titleize;
+    var titleize, rxTitleize;
 
     beforeEach(function () {
         module('encore.ui.utilities');
 
-        inject(function (titleizeFilter) {
+        inject(function (rxTitleizeFilter, titleizeFilter) {
+            rxTitleize = rxTitleizeFilter;
             titleize = titleizeFilter;
         });
     });
@@ -15,5 +16,13 @@ describe('titleize', function () {
 
     it('converts the string to title case', function () {
         expect(titleize('a bcD_e')).to.equal('A Bcd E');
+    });
+
+    it('replaces underscores with spaces', function () {
+        expect(rxTitleize('_A_B_')).to.equal(' A B ');
+    });
+
+    it('converts the string to title case', function () {
+        expect(rxTitleize('a bcD_e')).to.equal('A Bcd E');
     });
 });

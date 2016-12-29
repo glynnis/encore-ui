@@ -1,7 +1,7 @@
 angular.module('encore.ui.utilities')
 /**
  * @ngdoc filter
- * @name utilities.filter:titleize
+ * @name utilities.filter:rxTitleize
  * @description
  * Convert a string to title case, stripping out underscores and capitalizing words.
  *
@@ -13,14 +13,14 @@ angular.module('encore.ui.utilities')
  * @example
  * Both examples result in a string of `"A Simple String"`.
  * <pre>
- * {{ 'a simple_STRING' | titleize }}
+ * {{ 'a simple_STRING' | rxTitleize }}
  * </pre>
  *
  * <pre>
  * $filter('titleize')('a simple_STRING');
  * </pre>
  */
-.filter('titleize', function () {
+.filter('rxTitleize', function () {
     return function (inputString) {
         return inputString
             .toLowerCase()
@@ -29,4 +29,11 @@ angular.module('encore.ui.utilities')
                 return character.toUpperCase();
             });
     };
+}).filter('titleize', function ($filter) {
+    console.warn(
+        'DEPRECATED: titleize - Please use rxTitleize. ' +
+        'titleize will be removed in EncoreUI 4.0.0'
+    );
+
+    return $filter('rxTitleize');
 });
