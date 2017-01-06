@@ -1,4 +1,4 @@
-describe('utilities:Auth', function () {
+describe('utilities:rxAuth', function () {
     var auth, identity, permission, session, token;
 
     token = {
@@ -10,7 +10,7 @@ describe('utilities:Auth', function () {
                     'id': '655062',
                     'name': '655062'
                 },
-                'RAX-AUTH:authenticatedBy': ['PASSWORD']
+                'RAX-rxAuth:authenticatedBy': ['PASSWORD']
             }
         }
     };
@@ -31,11 +31,11 @@ describe('utilities:Auth', function () {
             session.isAuthenticated = sinon.stub().returns(true);
             permission.getRoles = sinon.stub().returns([{ 'name': 'admin' }]);
 
-            auth = $injector.get('Auth');
+            auth = $injector.get('rxAuth');
         });
     });
 
-    describe('service:Auth', function () {
+    describe('service:rxAuth', function () {
         it('login() should get a token', function () {
             var result = auth.login({ username: 'bruce.wayne', password: 'batmanRulez' });
             expect(result.access).not.be.empty;
